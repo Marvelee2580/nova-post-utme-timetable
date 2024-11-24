@@ -8,83 +8,57 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <h2 class="heading"><i class="fa-solid fa-chalkboard-teacher"></i> OPERATION POST-UTME TIMETABLE <i class="fa-solid fa-fist-raised"></i></h2>
+  <h2 class="heading"><i class="fa-solid fa-chalkboard-teacher"></i> 25-DAY CLARIFIED UTME PREPARATION TIMETABLE <i class="fa-regular fa-lightbulb" style="color: #FFD43B;"></i></h2>
   <input type="text" id="search" placeholder="Search for subjects, tutors, or days...">
   <button id="print-btn"><i class="fa-solid fa-print"></i> Print Timetable</button>
   <table id="timetable">
     <tr>
       <th>Day</th>
-      <th><i class="fa-solid fa-clock"></i> 2:00PM - 3:00PM</th>
-      <th><i class="fa-solid fa-clock"></i> 8:00PM - 9:45PM</th>
-      <th><i class="fa-solid fa-clock"></i> 10:00PM - 12:00PM</th>
+      <th><i class="fa-solid fa-clock"></i> 8:00PM - 9:30PM</th>
+      <th><i class="fa-solid fa-clock"></i> 10:00PM - 11:00PM</th>
     </tr>
     <tr>
       <td>Monday</td>
-      <td class="subject" data-tutor="Tutor Ibukun">Biology</td>
-      <td class="subject" data-tutor="Tutor Mandela">Chemistry</td>
-      <td class="subject" data-tutor="Tutor La Jehn">Mathematics</td>
+      <td class="subject" data-tutor="Tutor: Dev Marvelee">Chemistry</td>
+      <td class="subject" data-tutor="Tutor: Sir David">Physics</td> 
     </tr>
     <tr>
       <td>Tuesday</td>
-      <td class="subject" data-tutor="Tutor La Jehn">Mathematics</td>
-      <td class="subject" data-tutor="Tutor Lekan">Physics</td>
-      <td class="subject" data-tutor="Tutor Ibukun">Biology</td>
+      <td class="subject" data-tutor="Tutor: Dev Marvelee">Mathematics</td>
+      <td class="subject" data-tutor="Clarity Tutor">Biology</td>
     </tr>
     <tr>
       <td>Wednesday</td>
-      <td class="subject" data-tutor="Tutor Lekan">Physics</td>
-      <td class="subject" data-tutor="Tutor Marvelee">English</td>
-      <td class="subject" data-tutor="Tutor Mandela">Chemistry</td>
+      <td class="subject" data-tutor="Tutor: GBES">English</td>
+      <td class="subject" data-tutor="Tutor: Dev Marvelee">Chemistry</td>
     </tr>
     <tr>
       <td>Thursday</td>
-      <td class="subject" data-tutor="Tutor Marvelee">English</td>
-      <td class="subject" data-tutor="Tutor Ibukun">Biology</td>
-      <td class="subject" data-tutor="Tutor Lekan">Physics</td>
+      <td class="subject" data-tutor="Clarity Tutor">Biology</td>
+      <td class="subject" data-tutor="Tutor: Dev Marvelee">Mathematics</td>
     </tr>
     <tr>
       <td>Friday</td>
-      <td class="subject" data-tutor="Tutor Mandela">Chemistry</td>
-      <td class="subject" data-tutor="Tutor La Jehn">Mathematics</td>
-      <td class="subject" data-tutor="Tutor Marvelee">English</td>
+     <td class="subject" data-tutor="Tutor: Sir David">Physics</td>
+      <td class="subject" data-tutor="Tutor: GBES">English</td>
     </tr>
     <tr>
       <td>Saturday</td>
-      <td>-----</td>
-      <td class="subject" data-tutor="Mr. Green">Brainstorming Session</td>
-      <td class="subject" data-tutor="Nova tutors">Aptitude Test</td>
+      <td>Clarity Hour</td>
+      <td class="subject" data-tutor="Clarity Tutor">Brainstorming Session</td>
     </tr>
     <tr>
       <td>Sunday</td>
-      <td class="subject" data-tutor="Nova tutors">General knowledge</td>
-      <td class="subject" data-tutor="Nova Tutors">Quiz</td>
-      <td>-------</td>
+      <td>Quiz</td>
+      <td>Quiz 2</td>
     </tr>
   </table>
   <div id="tooltip" class="tooltip"></div>
-  <div id="note-popup" class="note-popup">
-    <textarea id="note-text" placeholder="Add your note here..."></textarea>
-    <button id="save-note">Save Note</button>
-    <button id="close-note-popup">Close</button>
-  </div>
-  <div id="reminder-popup" class="reminder-popup">
-    <h3>Set Class Reminders</h3>
-    <label>
-      <input type="checkbox" class="reminder-switch" data-time="2pm"> 2:00 PM
-    </label>
-    <label>
-      <input type="checkbox" class="reminder-switch" data-time="8pm"> 8:00 PM
-    </label>
-    <label>
-      <input type="checkbox" class="reminder-switch" data-time="10pm"> 10:00 PM
-    </label>
-    <button id="reminder-save">Save</button>
-    <button id="reminder-close">Close</button>
-  </div>
   <script src="main.js"></script>
 </body>
-</html>
+                                                                            </html>
