@@ -9,17 +9,58 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    user-select: none;
+    color: #fff;
 }
 
 .heading {
     font-family: 'Pacifico', cursive;
     color: #ffffff;
-    font-size: 36px;
     margin-bottom: 20px;
     text-shadow: 2px 2px #000000;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 2rem;
+    text-align: center;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+input#search {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+input#search:focus {
+    box-shadow: 0 0 10px #4a00e0;
+}
+
+button#print-btn {
+    background: #870707CF;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+button#print-btn:hover {
+    background-color: #0FD800CF;
+    border-color: #870707CF;
+    transform: scale(1.1);
 }
 
 table {
@@ -28,12 +69,14 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 18px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
     animation: fadeIn 2s ease-in-out;
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 15px 20px;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border: 1px solid #ddd;
@@ -51,15 +94,40 @@ td {
     color: #333;
     font-weight: 400;
     cursor: pointer;
+    position: relative;
+}
+
+td:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.subject::before {
+    content: attr(data-tutor);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    color: #fff;
+    background: #4a00e0;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    text-align: center;
+}
+
+.subject:hover::before {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 tr:nth-of-type(even) td {
     background-color: #f3f3f3;
-}
-
-tr:hover td {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
 }
 
 @keyframes fadeIn {
@@ -71,8 +139,16 @@ tr:hover td {
     }
 }
 
-/* Tooltip styling */
-
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 @media (max-width: 768px) {
     table, th, td {
@@ -82,131 +158,66 @@ tr:hover td {
     .heading {
         font-size: 28px;
     }
+
+    button#print-btn {
+        padding: 6px 15px;
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 480px) {
     table {
         font-size: 12px;
     }
+
     th, td {
-        padding: 8px 3px;
+        padding: 8px 10px;
     }
 
     .heading {
         font-size: 24px;
     }
-}
 
-.subject {
-  cursor: pointer;
-}
-
-.tooltip {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 5px 2px;
-  border-radius: 5px;
-  font-size: 10px;
-  display: none;
-  z-index: 1000;
-}
-
-.note-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  display: none;
-  animation: fadeIn 1s ease-in-out;
+    button#print-btn {
+        top: 15px;
+        right: 15px;
+    }
 }
 
 .alert {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  width: 90%;
-  text-align: center;
-  z-index: 1000;
-  animation: fadeIn 1s ease-in-out;
+    color: #000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 90%;
+    text-align: center;
+    z-index: 1000;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .alert a {
-  color: #3498db;
-  text-decoration: none;
+    color: #3498db;
+    text-decoration: none;
 }
 
 .alert .close-alert {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 28px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.reminder-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-
-.reminder-popup h3 {
-  margin-top: 0;
-}
-
-.reminder-popup label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-#calendar-links {
-  margin-top: 20px;
-}
-
-#calendar-links a {
-  display: block;
-  margin-bottom: 10px;
-  color: #0073e6;
-  text-decoration: none;
-}
-
-#calendar-links a:hover {
-  text-decoration: underline;
-}
-#print-btn{
-	border: none ;
-	position: absolute ;
-	right: 10px ;
-	top: 10px ;
-	padding : 3px ;
-	border-radius: 5.0px ;
-	border: 2px solid #870707CF ;
-	font-family: Georgia ;
-}
-#print-btn:hover{
-	background-color: #0FD800CF ;
-}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+	}
